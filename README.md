@@ -1,13 +1,13 @@
 # TeamNeutral
 
-**Welcome to TeamNeutral Github**
+## **Welcome to TeamNeutral Github**
 
-*Downloads needed:
+***Downloads needed:***
 
-Python 3.9
-  pip install:
-    Django
-    django-crispy-forms
-    Pillow
+1. Python 3.9  
+  pip install:  
+    -Django  
+    -django-crispy-forms  
+    -Pillow  
 
 
