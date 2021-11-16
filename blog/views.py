@@ -16,6 +16,8 @@ def home(request):
 
 def about(request):
 	return render(request, 'blog/about.html', {'title': 'About'})
+def communities(request):
+	return render(request, 'blog/communities.html')
 
 class PostListView(ListView):
 	model = Post
