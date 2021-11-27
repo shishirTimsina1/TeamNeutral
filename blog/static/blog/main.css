@@ -14,7 +14,7 @@ ul {
 
 .bg-steel {
   background-color: #5f788a;
-}
+}/* this should be changing color of the navbar on the top*/
 
 .site-header .navbar-nav .nav-link {
   color: #cbd5db;
