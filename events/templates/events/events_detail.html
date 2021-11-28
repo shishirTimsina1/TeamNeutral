@@ -43,6 +43,10 @@
                 <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-dislike' object.id%}" name="events_id_dislike">Dislike</a>
                 {% endif %}
               </div>
+              {% if object.image %}
+                <div><img class ="eventimg" src="{{object.image.url}}"></div>
+              {% endif %}
+
               {% if object.creator == user %}
               <div>
                 <p class="article-content">Users signed up:

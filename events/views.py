@@ -49,7 +49,7 @@ class EventsDetailView(DetailView):
  
 class EventsCreateView(LoginRequiredMixin, CreateView):
     model = Events
-    fields = ['title', 'content', 'event_date', 'community', 'event_type' ]
+    fields = ['title', 'content', 'event_date', 'community', 'event_type', 'image' ]
  
     def form_valid(self, form):
         form.instance.creator = self.request.user
@@ -57,7 +57,7 @@ class EventsCreateView(LoginRequiredMixin, CreateView):
  
 class EventsUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Events
-    fields = ['title', 'content', 'event_date', 'community', 'event_type' ]
+    fields = ['title', 'content', 'event_date', 'community', 'event_type', 'image' ]
  
     def form_valid(self, form):
         form.instance.creator = self.request.user
