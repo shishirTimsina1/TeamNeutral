@@ -1,0 +1,61 @@
+{% extends "events/base.html"%}
+ 
+    {% block content %}
+    <br>
+    <br>
+    <br>
+ 
+   
+    <h1>Welcome to the event detail page</h1>
+        <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ object.creator }}</a>
+          <small class="text-muted">{{object.date_created|date:"F d, Y" }}</small>
+        </div>
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.content }}</p>
+            <p class="article-content">Community: {{ object.community }}</p>
+            <p class="article-content">Event Date: {{ object.event_date }}</p>
+            <p class="article-content">Likes: {{ object.likes.count }}</p>
+            <p class="article-content">Dislikes: {{ object.dislikes.count }}</p>
+            <p class="article-content">Signed up: {{ object.signed_up.count }}</p>
+            {% if object.creator == user %}
+              <div>
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-update' object.id%}">Update</a>
+                <a class = "btn btn-danger btn-sm mt-1 mb-1"href="{% url 'events-delete' object.id%}">Delete</a>
+              </div>
+            {% endif %}
+              <div>
+                {% if user in object.signed_up.all %}
+                  <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-leave' object.id%}">Leave Event</a>
+                {% else %}
+                  <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-signup' object.id%}">Signup</a>
+                {% endif %}
+             
+                {% if user in object.likes.all %}
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-unlike' object.id%}" name="events_id_unlike">Unlike</a>
+                {% elif user in object.dislikes.all%}
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-undislike' object.id%}" name="events_id_undislike">Remove Dislike</a>
+ 
+                {% else %}
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-like' object.id%}" name="events_id_like">Like</a>
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-dislike' object.id%}" name="events_id_dislike">Dislike</a>
+                {% endif %}
+              </div>
+              {% if object.creator == user %}
+              <div>
+                <p class="article-content">Users signed up:
+                  {% for user in object.signed_up.all %}
+                  {{ user.username }}
+                  {% endfor %}
+                </p>
+              </div>
+            {% endif %}
+      </div>
+    </article>
+ 
+    {% if not events %}
+    <p>No events found</p>
+    {% endif %}
+{% endblock content %}

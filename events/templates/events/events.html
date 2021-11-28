@@ -1,0 +1,35 @@
+{% extends "events/base.html"%}
+ 
+    {% block content %}
+    <br>
+    <br>
+    <br>
+ 
+   
+    <h1>Welcome to the events page</h1>
+ 
+    {% if events %}
+    <br>
+    <h1>Scheduled events:</h1>
+    {% else %}
+    <h1>No scheduled events </h1>
+    {% endif %}
+    {% for event in events %}
+        <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ event.creator }}</a>
+          <small class="text-muted">{{event.date_created|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'events-detail' event.id %}">{{ event.title }}</a></h2>
+        <p class="article-content">{{ event.content }}</p>
+            <p class="article-content">{{ event.community }}</p>
+            <p class="article-content">{{ event.event_date }}</p>
+      </div>
+    </article>
+    {% endfor %}
+ 
+    {% if not events %}
+    <p>No events found</p>
+    {% endif %}
+{% endblock content %}
