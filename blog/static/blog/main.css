@@ -12,13 +12,14 @@ ul {
   margin: 0;
 }
 
-.bg-steel {
-  background-color: #5f788a;
+.bg-dark {
+  background-color: #DC143C;
 }/* this should be changing color of the navbar on the top*/
 
 .site-header .navbar-nav .nav-link {
   color: #cbd5db;
 }
+.floatRight{float:right;margin-left:20px}
 
 .site-header .navbar-nav .nav-link:hover {
   color: #ffffff;
