@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your views here.
 
@@ -43,7 +44,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
 	model = Post
-	fields =  ['title', 'content']
+	fields =  ['title', 'content', 'community', 'image']
 
 	def form_valid(self,form):
 		form.instance.author = self.request.user
@@ -51,7 +52,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 	
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Post
-	fields =  ['title', 'content']
+	fields =  ['title', 'content', 'community', 'image']
 
 	def form_valid(self,form):
 		form.instance.author = self.request.user
@@ -70,3 +71,23 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		if self.request.user == post.author:
 			return True
 		return False
+
+def LikeView(request, pk):
+    post = get_object_or_404(Post, id = pk)
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('post-detail', args=[str(pk)]))
+
+def UnlikeView(request, pk):
+    post = get_object_or_404(Post, id = pk)
+    post.likes.remove(request.user)
+    return HttpResponseRedirect(reverse('post-detail', args=[str(pk)]))
+
+def DislikeView(request, pk):
+    post = get_object_or_404(Post, id = pk)
+    post.dislikes.add(request.user)
+    return HttpResponseRedirect(reverse('post-detail', args=[str(pk)]))
+
+def RemoveDislikeView(request, pk):
+    post = get_object_or_404(Post, id = pk)
+    post.dislikes.remove(request.user)
+    return HttpResponseRedirect(reverse('post-detail', args=[str(pk)]))

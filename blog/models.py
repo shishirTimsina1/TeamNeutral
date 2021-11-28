@@ -3,12 +3,24 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+COMMUNITY_CHOICES = (
+    ('Mortal Kombat', 'MORTAL KOMBAT'),
+    ('Guilty Gear', 'GUILTY GEAR'),
+    ('Smash', 'SMASH'),
+    ('Street Fighter', 'STREET FIGHTER'),
+	('All', 'ALL')
+)
+
+
 class Post(models.Model):
 	title = models.CharField(max_length=200)
 	content = models.TextField()
 	date_posted = models.DateTimeField(default= timezone.now)
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
-	community = models.TextField(default = 'all')
+	community = models.CharField(max_length=20 ,choices=COMMUNITY_CHOICES, default='All')
+	dislikes = models.ManyToManyField(User, related_name = 'post_dislikes')
+	likes = models.ManyToManyField(User, related_name = 'post_likes')
+	image = models.ImageField(null=True, blank=True, upload_to = "post-images/")
 
 	def __str__(self):
 		return self.title
