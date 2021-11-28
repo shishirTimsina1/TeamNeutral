@@ -26,6 +26,9 @@
                 <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'post-dislike' object.id%}" name="post_id_dislike">Dislike</a>
                 {% endif %}
               </div>
+			{% if object.image %}
+			<div><img src="{{object.image.url}}"></div>
+			{% endif %}
 		  </div>
 		</article>
 {% endblock content %}
