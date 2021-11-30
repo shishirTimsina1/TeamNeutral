@@ -45,7 +45,7 @@ class RecommenderForm(forms.Form):
 		('mk', 'Yea, its at the core of all fighting games'),
 		('sf', 'Yup, footsies are the most complex and interesting part'),
 		)
-	q4 = forms.MultipleChoiceField(label = 'Are you squeamish?',
+	q4 = forms.MultipleChoiceField(label = 'Do you know what footsies are?',
 		choices=CHOICES_4, widget=forms.CheckboxSelectMultiple())
 
 	CHOICES_5 = (
@@ -57,34 +57,43 @@ class RecommenderForm(forms.Form):
 		choices=CHOICES_5, widget=forms.CheckboxSelectMultiple())
 
 	CHOICES_6 = (
-		(),
-		(),
-		(),
-		(),
+		('gg', 'Huh?'),
+		('gg2', 'Love it, it is a must have for a modern fighting game'),
+		('gg3', 'I like it, but if the game is fun enough, I do not need it'),
 		)
-	q6 = forms.MultipleChoiceField(label = 'Do you get ( or think you will get ) overwhelmed when you have too many characters to pick from?',
+	q6 = forms.MultipleChoiceField(label = 'What is your take on rollback netcode',
 		choices=CHOICES_6, widget=forms.CheckboxSelectMultiple())
-	CHOICES_2 = (
-		(),
-		(),
-		(),
-		(),
+
+	CHOICES_7 = (
+		('gg', 'Not really my thing'),
+		('nt', 'I am neutral on it :)'),
+		('gg2', 'If it looks good, it looks good, anime or not'),
+		('gg3', 'I enjoy anime in my free time'),
 		)
-	CHOICES_2 = (
-		(),
-		(),
-		(),
-		(),
+	q7 = forms.MultipleChoiceField(label = 'Opinion on anime aesthetic?',
+		choices=CHOICES_7, widget=forms.CheckboxSelectMultiple())
+
+	CHOICES_8 = (
+		('gg', 'I want relentless action, constantly on my toes'),
+		('mk', 'I want fast action, in small bursts'),
+		('sf', 'I like to keep it slow and deliberate'),
 		)
-	CHOICES_2 = (
-		(),
-		(),
-		(),
-		(),
+	q8 = forms.MultipleChoiceField(label = 'How fast do you want the action to be?',
+		choices=CHOICES_8, widget=forms.CheckboxSelectMultiple())
+
+	CHOICES_9 = (
+		('mk', 'I mostly play single player'),
+		('mk2', 'It is important to have, but multiplayer is the real game'),
+		('gg', 'I am here to fight online'),
 		)
-	CHOICES_2 = (
-		(),
-		(),
-		(),
-		(),
+	q9 = forms.MultipleChoiceField(label = 'How important is single player content to you in a fighting game?',
+		choices=CHOICES_9, widget=forms.CheckboxSelectMultiple())
+
+	CHOICES_10 = (
+		('sf', 'I have been playing since the arcade days'),
+		('sf2', 'Been playing for years'),
+		('sm', 'I have tried a few casual games'),
+		('sm2', 'What is a fighting game'),
 		)
+	q10 = forms.MultipleChoiceField(label = 'How much experience do you have with fighting games',
+		choices=CHOICES_10, widget=forms.CheckboxSelectMultiple())

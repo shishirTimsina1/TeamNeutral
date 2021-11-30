@@ -162,6 +162,88 @@ def recommender(request):
 				scores[0] += 5
 				scores[1] += 3
 				scores[3] += 3
+
+			answer6 = form.cleaned_data.get('q6')
+			if(answer6[0] == 'gg'):
+				scores[2] += 1
+			elif(answer6[0] == 'gg2'):
+				scores[0] -= 1
+				scores[1] -= 1
+				scores[2] += 5
+				scores[3] -= 2
+			elif(answer6[0] == 'gg3'):
+				scores[0] += 1
+				scores[1] += 1
+				scores[2] += 1
+				scores[3] += 1
+
+			answer7 = form.cleaned_data.get('q7')
+			if(answer7[0] == 'gg'):
+				scores[2] -= 2
+			elif(answer7[0] == 'nt'):
+				scores[0] += 0
+			elif(answer7[0] == 'gg2'):
+				scores[1] += 2
+				scores[2] += 2
+				scores[3] += 1
+			elif(answer7[0] == 'gg3'):
+				scores[2] += 4
+
+			answer8 = form.cleaned_data.get('q8')
+			if(answer8[0] == 'gg'):
+				scores[0] -= 1
+				scores[1] += 2
+				scores[2] += 4
+				scores[3] += 1
+			elif(answer8[0] == 'mk'):
+				scores[0] += 2
+				scores[1] += 2
+				scores[2] += 1
+				scores[3] += 2
+			elif(answer8[0] == 'sf'):
+				scores[0] += 1
+				scores[1] += 1
+				scores[3] += 4
+
+			answer9 = form.cleaned_data.get('q9')
+			if(answer9[0] == 'mk'):
+				scores[0] += 3
+				scores[1] += 3
+				scores[2] -= 1
+				scores[3] += 1
+			elif(answer9[0] == 'mk2'):
+				scores[0] += 1
+				scores[1] += 2
+				scores[2] += 1
+				scores[3] += 2
+			elif(answer9[0] == 'gg'):
+				scores[0] += 2
+				scores[1] += 2
+				scores[2] += 4
+				scores[3] += 2
+
+			answer10 = form.cleaned_data.get('q10')
+			if(answer9[0] == 'sf'):
+				scores[0] += 0
+				scores[1] += 2
+				scores[2] += 2
+				scores[3] += 4
+			elif(answer9[0] == 'sf2'):
+				scores[0] += 1
+				scores[1] += 2
+				scores[2] += 3
+				scores[3] += 4
+			elif(answer9[0] == 'sm'):
+				scores[0] += 3
+				scores[1] += 2
+				scores[2] += 2
+				scores[3] -= 1
+			elif(answer9[0] == 'sm2'):
+				scores[0] += 5
+				scores[1] += 1
+				scores[2] += 4
+				scores[3] -= 4
+
 			winner = max(scores)
 			index = scores.index(winner)
 			com = ''
@@ -173,7 +255,7 @@ def recommender(request):
 				com = 'Guilty Gear'
 			elif(index == 3):
 				com = 'Street Fighter'
-			messages.success(request, f'Form submitted, {username} You should join {com} with scores{scores}')
+			messages.success(request, f'Hi {username}!, You should checkout {com}')
 			return redirect('communities')
 	else:
 		form = RecommenderForm()
