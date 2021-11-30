@@ -15,4 +15,5 @@ urlpatterns = [
 	path('SmashEvents/', SmashEvents, name = 'Smash-events'),
 	path('MortalKombatPosts/', mortalKombatPosts, name = 'MK-posts'),
 	path('MortalKombatEvents/', mortalKombatEvents, name = 'MK-events'),
+	path('recommender/', views.recommender, name = 'recommender'),
 ]
