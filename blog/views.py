@@ -93,30 +93,30 @@ def RemoveDislikeView(request, pk):
 
 def YourPosts(request):
 	context = {
-		'posts': Post.objects.all()
+		'posts': Post.objects.order_by('-date_posted').all()
 	}
 	return render(request, 'blog/YourPosts.html', context)
 
 def LikedPosts(request):
 	context = {
-		'posts': Post.objects.all()
+		'posts': Post.objects.order_by('-date_posted').all()
 	}
 	return render(request, 'blog/LikedPosts.html', context)
 
 def LikedEvents(request):
 	context = {
-		'events': Events.objects.all()
+		'events': Events.objects.order_by('-date_posted').all()
 	}
 	return render(request, 'blog/LikedEvents.html', context)
 
 def JoinedEvents(request):
 	context = {
-		'events': Events.objects.all()
+		'events': Events.objects.order_by('-date_posted').all()
 	}
 	return render(request, 'blog/JoinedEvents.html', context)
 
 def YourEvents(request):
 	context = {
-		'events': Events.objects.all()
+		'events': Events.objects.order_by('-date_posted').all()
 	}
 	return render(request, 'blog/YourEvents.html', context)
