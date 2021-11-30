@@ -3,7 +3,7 @@
 <h1>Welcome to Liked Posts</h1>
 {%if user.is_authenticated%}
     {% for post in posts %}
-        {% if user in post.likes %}
+        {% if user in post.likes.all %}
 		<article class="media content-section">
 		  <img class = "rounded-circle article-img" src = "{{post.author.profile.image.url}}">
 		  <div class="media-body">

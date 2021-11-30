@@ -3,7 +3,7 @@
 <h1>Welcome to Joined Events</h1>
 {%if user.is_authenticated%}
     {% for event in events %}
-    {% if user in event.signed_up %}
+    {% if user in event.signed_up.all %}
         <article class="media content-section">
       <div class="media-body">
         <div class="article-metadata">

@@ -3,7 +3,7 @@
 <h1>Welcome to Liked Events</h1>
 {%if user.is_authenticated%}
     {% for event in events %}
-    {% if user in event.likes %}
+    {% if user in event.likes.all %}
         <article class="media content-section">
       <div class="media-body">
         <div class="article-metadata">
