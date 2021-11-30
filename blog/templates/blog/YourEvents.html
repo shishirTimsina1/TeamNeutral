@@ -1,6 +1,7 @@
 {% extends "communities/base.html"%}
 {% block content %}
 <h1>Welcome to Your Events</h1>
+{% if user.is_authenticated %}
     {% for event in events %}
     {% if user == event.creator %}
         <article class="media content-section">
@@ -17,6 +18,9 @@
     </article>
     {% endif %}
     {% endfor %}
+{%else%}
+<p>Please login to see events your events</p>
+{%endif%}
     {% if not events %}
     <p>No events found</p>
     {% endif %}

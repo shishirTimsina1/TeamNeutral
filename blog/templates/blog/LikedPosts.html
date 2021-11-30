@@ -1,7 +1,7 @@
 {% extends "communities/base.html"%}
 {% block content %}
 <h1>Welcome to Liked Posts</h1>
-    
+{%if user.is_authenticated%}
     {% for post in posts %}
         {% if user in post.likes %}
 		<article class="media content-section">
@@ -18,6 +18,9 @@
 		</article>
         {%endif%}
 	{% endfor %}
+    {%else%}
+    <p>Please login to see posts you have liked</p>
+    {%endif%}
     {% if not posts %}
     <p>No posts found</p>
     {% endif %}

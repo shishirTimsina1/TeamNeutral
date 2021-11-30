@@ -16,6 +16,7 @@
 			<p class="article-content">Likes: {{ object.likes.count }}</p>
 			<p class="article-content">Dislikes: {{ object.dislikes.count }}</p>
 			<div>
+			{%if user.is_authenticated%}
                 {% if user in object.likes.all %}
                 <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'post-unlike' object.id%}" name="post_id_unlike">Unlike</a>
                 {% elif user in object.dislikes.all%}
@@ -25,6 +26,9 @@
                 <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'post-like' object.id%}" name="post_id_like">Like</a>
                 <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'post-dislike' object.id%}" name="post_id_dislike">Dislike</a>
                 {% endif %}
+			{% else %}
+			<p>Please login to like or dislike a post</p>
+			{%endif%}
               </div>
 			{% if object.image %}
 			<div>
