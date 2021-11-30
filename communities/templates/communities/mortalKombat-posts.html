@@ -12,7 +12,7 @@
     <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'SF-posts' %}">Street Fighter Posts</a>
 	<a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'SF-events' %}">Street Fighter Events</a>
     <br>
-    <a class = "btn btn-primary btn-lg mt-1 mb-1"href="#">Recommender</a>
+    <a class = "btn btn-primary btn-lg mt-1 mb-1"href="{% url 'recommender' %}">Recommender</a>
     <br>
     <br>
     {% for post in posts %}

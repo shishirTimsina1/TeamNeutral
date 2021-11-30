@@ -1,5 +1,13 @@
 {% extends "blog/base.html" %}
 {% block content %}
+<h1>Welcome to your homepage, {{ user.username }}!</h1>
+<a class = "btn btn-secondary btn-lg btn-block mt-1 mb-1"href="{% url 'YourEvents' %}">Your Events</a>
+<a class = "btn btn-secondary btn-lg btn-block mt-1 mb-1"href="{% url 'JoinedEvents' %}">Joined Events</a>
+<a class = "btn btn-secondary btn-lg btn-block mt-1 mb-1"href="{% url 'LikedEvents' %}">Liked Events</a>
+<a class = "btn btn-secondary btn-lg btn-block mt-1 mb-1"href="{% url 'YourPosts' %}">Your Posts</a>
+<a class = "btn btn-secondary btn-lg btn-block mt-1 mb-1"href="{% url 'LikedPosts' %}">Liked Posts</a>
+
+<!--
 	{% for post in posts %}
 		<article class="media content-section">
 		  <img class = "rounded-circle article-img" src = "{{post.author.profile.image.url}}">
@@ -15,8 +23,9 @@
 		  </div>
 		</article>
 	{% endfor %}
-
+	-->
 	<!-- pagination -->
+	<!--
 	{% if is_paginated %}
 		{% if page_obj.has_previous %}
        		<a class="btn btn-outline-info mb-4" href="?page=1">First</a>
@@ -38,5 +47,6 @@
         	<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
       	{% endif %}
 	{%endif%}
+	-->
 {% endblock content %}
 

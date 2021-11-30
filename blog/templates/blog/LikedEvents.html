@@ -1,0 +1,23 @@
+{% extends "communities/base.html"%}
+{% block content %}
+<h1>Welcome to Liked Events</h1>
+    {% for event in events %}
+    {% if user in event.likes %}
+        <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ event.creator }}</a>
+          <small class="text-muted">{{event.date_created|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'events-detail' event.id %}">{{ event.title }}</a></h2>
+        <p class="article-content">{{ event.content }}</p>
+            <p class="article-content">{{ event.community }}</p>
+            <p class="article-content">{{ event.event_date }}</p>
+      </div>
+    </article>
+    {% endif %}
+    {% endfor %}
+    {% if not events %}
+    <p>No events found</p>
+    {% endif %}
+{% endblock content%}

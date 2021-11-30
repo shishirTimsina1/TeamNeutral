@@ -2,7 +2,8 @@ from django.urls import path
 from . import views
 from .views import (PostListView, PostDetailView, PostCreateView,
                     PostUpdateView, PostDeleteView, UserPostListView,
-                    LikeView, UnlikeView, DislikeView, RemoveDislikeView)
+                    LikeView, UnlikeView, DislikeView, RemoveDislikeView, 
+                    YourEvents, YourPosts, JoinedEvents,LikedEvents,LikedPosts)
 
 urlpatterns = [
     path('', PostListView.as_view() , name='blog-home'),
@@ -16,5 +17,10 @@ urlpatterns = [
     path('post/<int:pk>/unlike/',UnlikeView, name='post-unlike'),
     path('post/<int:pk>/Dislike/',DislikeView, name='post-dislike'),
     path('post/<int:pk>/RemoveDislike/',RemoveDislikeView, name='post-undislike'),
+    path('YourPosts/',YourPosts, name='YourPosts'),
+    path('YourEvents/',YourEvents, name='YourEvents'),
+    path('JoinedEvents/',JoinedEvents, name='JoinedEvents'),
+    path('LikedEvents/',LikedEvents, name='LikedEvents'),
+    path('LikedPosts/',LikedPosts, name='LikedPosts'),
 ]
 

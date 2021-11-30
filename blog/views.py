@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.urls import reverse
+from events.models import Events
 
 # Create your views here.
 
@@ -89,3 +90,33 @@ def RemoveDislikeView(request, pk):
     post = get_object_or_404(Post, id = pk)
     post.dislikes.remove(request.user)
     return HttpResponseRedirect(reverse('post-detail', args=[str(pk)]))
+
+def YourPosts(request):
+	context = {
+		'posts': Post.objects.all()
+	}
+	return render(request, 'blog/YourPosts.html', context)
+
+def LikedPosts(request):
+	context = {
+		'posts': Post.objects.all()
+	}
+	return render(request, 'blog/LikedPosts.html', context)
+
+def LikedEvents(request):
+	context = {
+		'events': Events.objects.all()
+	}
+	return render(request, 'blog/LikedEvents.html', context)
+
+def JoinedEvents(request):
+	context = {
+		'events': Events.objects.all()
+	}
+	return render(request, 'blog/JoinedEvents.html', context)
+
+def YourEvents(request):
+	context = {
+		'events': Events.objects.all()
+	}
+	return render(request, 'blog/YourEvents.html', context)
