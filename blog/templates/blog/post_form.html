@@ -10,7 +10,11 @@
 				{{ form|crispy }}
 			</fieldset>
 			<div class="form-group">
-				<button class="btn btn-outline-info" type="submit">Create<button>
+				{% if request.get_full_path == '/post/new/' %}
+				<button class="btn btn-outline-info" type="submit">Create Post<button>
+				{% else %}
+				<button class="btn btn-outline-info" type="submit">Update Post</button>
+				{% endif %}
 			</div>
 		</form>
 	</div>
