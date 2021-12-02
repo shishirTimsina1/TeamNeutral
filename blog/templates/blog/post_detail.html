@@ -54,8 +54,26 @@
 			</strong>
 			<br>
 			{{ comment.body }}
+			<p class="article-content">Likes: {{ comment.likes.count }}</p>
+			<p class="article-content">Dislikes: {{ comment.dislikes.count }}</p>
+			<div>
+			{%if user.is_authenticated%}
+                {% if user in comment.likes.all %}
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'comment-unlike' comment.id%}" name="post_id_unlike">Unlike</a>
+                {% elif user in comment.dislikes.all%}
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'comment-undislike' comment.id%}" name="post_id_undislike">Remove Dislike</a>
+ 
+                {% else %}
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'comment-like' comment.id%}" name="post_id_like">Like</a>
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'comment-dislike' comment.id%}" name="post_id_dislike">Dislike</a>
+                {% endif %}
+			{% else %}
+			<p>Please login to like or dislike a comment</p>
+			{%endif%}
+              </div>
 			<br>
 			<br>
+
 			
 		  {% endfor %}
 		{%endif%}

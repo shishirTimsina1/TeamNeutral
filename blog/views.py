@@ -132,3 +132,31 @@ class AddCommentView(CreateView):
 	def form_valid(self, form):
 		form.instance.post_id = self.kwargs['pk']
 		return super().form_valid(form)
+
+def CommentLikeView(request, pk):
+	comment = get_object_or_404(Comment, id = pk)
+	comment.likes.add(request.user)
+	post = comment.post
+	returnPK = post.id
+	return HttpResponseRedirect(reverse('post-detail', args=[str(returnPK)]))
+
+def CommentUnlikeView(request, pk):
+	comment = get_object_or_404(Comment, id = pk)
+	comment.likes.remove(request.user)
+	post = comment.post
+	returnPK = post.id
+	return HttpResponseRedirect(reverse('post-detail', args=[str(returnPK)]))
+
+def CommentDislikeView(request, pk):
+	comment = get_object_or_404(Comment, id = pk)
+	comment.dislikes.add(request.user)
+	post = comment.post
+	returnPK = post.id
+	return HttpResponseRedirect(reverse('post-detail', args=[str(returnPK)]))
+
+def CommentRemoveDislikeView(request, pk):
+	comment = get_object_or_404(Comment, id = pk)
+	comment.dislikes.remove(request.user)
+	post = comment.post
+	returnPK = post.id
+	return HttpResponseRedirect(reverse('post-detail', args=[str(returnPK)]))

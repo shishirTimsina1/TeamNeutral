@@ -4,7 +4,8 @@ from .views import (PostListView, PostDetailView, PostCreateView,
                     PostUpdateView, PostDeleteView, UserPostListView,
                     LikeView, UnlikeView, DislikeView, RemoveDislikeView, 
                     YourEvents, YourPosts, JoinedEvents,LikedEvents,LikedPosts,
-                    AddCommentView)
+                    AddCommentView, CommentLikeView, CommentRemoveDislikeView, CommentDislikeView,
+                    CommentUnlikeView)
 
 urlpatterns = [
     path('', PostListView.as_view() , name='blog-home'),
@@ -24,5 +25,9 @@ urlpatterns = [
     path('LikedEvents/',LikedEvents, name='LikedEvents'),
     path('LikedPosts/',LikedPosts, name='LikedPosts'),
     path('post/<int:pk>/comment/', AddCommentView.as_view() , name='add-comment'),
+    path('post/<int:pk>/comment/like/',CommentLikeView, name='comment-like'),
+    path('post/<int:pk>/comment/unlike/',CommentUnlikeView, name='comment-unlike'),
+    path('post/<int:pk>/comment/Dislike/',CommentDislikeView, name='comment-dislike'),
+    path('post/<int:pk>/comment/RemoveDislike/',CommentRemoveDislikeView, name='comment-undislike'),
 ]
 
