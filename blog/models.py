@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.contrib import admin
 
 COMMUNITY_CHOICES = (
     ('Mortal Kombat', 'MORTAL KOMBAT'),
@@ -27,3 +28,12 @@ class Post(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('post-detail', kwargs = {'pk':self.pk})
+
+
+
+class templateImages(models.Model):
+	name = models.CharField(max_length = 20)
+	image = models.ImageField(upload_to="template-images")
+
+class InlineImage(admin.TabularInline):
+    model = templateImages

@@ -5,6 +5,8 @@
 {% else %}
 <h1 class="text-center font-weight-bold">Welcome to the Neutral</h1>
 {% endif %}
+
+
 {%if user.is_authenticated%}
 <a class = "btn btn-secondary btn-lg btn-block mt-1 mb-1"href="{% url 'YourEvents' %}">Your Events</a>
 <a class = "btn btn-secondary btn-lg btn-block mt-1 mb-1"href="{% url 'JoinedEvents' %}">Joined Events</a>
