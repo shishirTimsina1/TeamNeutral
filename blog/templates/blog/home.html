@@ -3,7 +3,7 @@
 {% if user.is_authenticated%}
 <h1>Welcome to your homepage, {{ user.username }}!</h1>
 {% else %}
-<h1>Welcome to the homepage!</h1>
+<h1 class="text-center font-weight-bold">Welcome to the Neutral</h1>
 {% endif %}
 {%if user.is_authenticated%}
 <a class = "btn btn-secondary btn-lg btn-block mt-1 mb-1"href="{% url 'YourEvents' %}">Your Events</a>
@@ -15,8 +15,16 @@
 <br>
 <iframe src="https://player.twitch.tv/?channel=gmhikaru&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
 {% else %}
-<p>Log in to see your events, events you have joined, liked events, your posts, and liked posts</p>
-<iframe src="https://player.twitch.tv/?channel=gmhikaru&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+<p class="text-center">Log in to see your events, events you have joined, liked events, your posts, and liked posts</p>
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-8">
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe class="embed-responsive-item align-self-center" src="https://player.twitch.tv/?channel=gmhikaru&parent=localhost" allowfullscreen="true" scrolling="no"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
 <!--iframe needed to show a twitch stream, parent must be you websites url, channel can be any twitch channel that is streaming. can also show past vidoes,
 Move the frame as needed -->
 
