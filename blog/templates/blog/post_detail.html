@@ -12,6 +12,11 @@
 		      {% endif %}
 		    </div>
 		    <h2 class="article-title"> {{ object.title }}</h2>
+			{% if object.image %}
+			<div>
+				<img src="{{object.image.url}}" class="eventimg">
+			</div>
+			{% endif %}
 		    <p class="article-content">{{ object.content }}</p>
 			<p class="article-content">Likes: {{ object.likes.count }}</p>
 			<p class="article-content">Dislikes: {{ object.dislikes.count }}</p>
@@ -30,12 +35,49 @@
 			<p>Please login to like or dislike a post</p>
 			{%endif%}
               </div>
-			{% if object.image %}
-			<div>
-				<img src="{{object.image.url}}" class="eventimg">
-			</div>
-			{% endif %}
+			
 		  </div>
 		</article>
+		<h1>Comments...</h1>
+
+		{% if not post.comments.all %}
+		  	No Comments Yet... <a href="{% url 'add-comment' post.pk%}"> Add One</a>
+		{% else %}
+		<a href="{% url 'add-comment' post.pk%}">Add Comment</a>
+		<br>
+		<br>
+
+		  {%for comment in post.comments.all%}
+		  	<strong>
+		  		{{comment.name}} - 
+				{{comment.date_added}}
+			</strong>
+			<br>
+			{{ comment.body }}
+			<p class="article-content">Likes: {{ comment.likes.count }}</p>
+			<p class="article-content">Dislikes: {{ comment.dislikes.count }}</p>
+			<div>
+			{%if user.is_authenticated%}
+                {% if user in comment.likes.all %}
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'comment-unlike' comment.id%}" name="post_id_unlike">Unlike</a>
+                {% elif user in comment.dislikes.all%}
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'comment-undislike' comment.id%}" name="post_id_undislike">Remove Dislike</a>
+ 
+                {% else %}
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'comment-like' comment.id%}" name="post_id_like">Like</a>
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'comment-dislike' comment.id%}" name="post_id_dislike">Dislike</a>
+                {% endif %}
+			{% else %}
+			<p>Please login to like or dislike a comment</p>
+			{%endif%}
+              </div>
+			<br>
+			<br>
+
+			
+		  {% endfor %}
+		{%endif%}
+		<hr>
+		
 {% endblock content %}
 

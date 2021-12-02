@@ -17,7 +17,7 @@ class RecommenderForm(forms.Form):
 		('sm', 'I played a bunch of Nintendo games growing up'),
 		('sm2', 'I played or watched a few at a friends house'),
 		('sm3', 'I know of them, never played them however'),
-		('sm4', 'What is a Mairo'),
+		('sm4', 'What is a Mario'),
 		)
 	your_name = forms.CharField(label = 'Your name', max_length=50)
 	q1 = forms.MultipleChoiceField(label = 'Have you played any Nintendo Games?',

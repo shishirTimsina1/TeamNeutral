@@ -57,7 +57,7 @@ class EventsCreateView(LoginRequiredMixin, CreateView):
  
 class EventsUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Events
-    fields = ['title', 'content', 'event_date', 'community', 'event_type', 'image' ]
+    fields = ['title', 'content', 'image' ]
  
     def form_valid(self, form):
         form.instance.creator = self.request.user
@@ -71,7 +71,7 @@ class EventsUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
  
 class EventsDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Events
-    success_url = '/events/'
+    success_url = '/'
  
     def test_func(self):
         event = self.get_object()

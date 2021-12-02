@@ -255,7 +255,7 @@ def recommender(request):
 				com = 'Guilty Gear'
 			elif(index == 3):
 				com = 'Street Fighter'
-			messages.success(request, f'Hi {username}!, You should checkout {com}')
+			messages.success(request, f'Hi {username}! You should checkout {com}')
 			return redirect('communities')
 	else:
 		form = RecommenderForm()
