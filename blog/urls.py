@@ -3,7 +3,8 @@ from . import views
 from .views import (PostListView, PostDetailView, PostCreateView,
                     PostUpdateView, PostDeleteView, UserPostListView,
                     LikeView, UnlikeView, DislikeView, RemoveDislikeView, 
-                    YourEvents, YourPosts, JoinedEvents,LikedEvents,LikedPosts)
+                    YourEvents, YourPosts, JoinedEvents,LikedEvents,LikedPosts,
+                    AddCommentView)
 
 urlpatterns = [
     path('', PostListView.as_view() , name='blog-home'),
@@ -22,5 +23,6 @@ urlpatterns = [
     path('JoinedEvents/',JoinedEvents, name='JoinedEvents'),
     path('LikedEvents/',LikedEvents, name='LikedEvents'),
     path('LikedPosts/',LikedPosts, name='LikedPosts'),
+    path('post/<int:pk>/comment/', AddCommentView.as_view() , name='add-comment'),
 ]
 

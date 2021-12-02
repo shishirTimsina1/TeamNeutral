@@ -71,7 +71,7 @@ class EventsUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
  
 class EventsDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Events
-    success_url = '/events/'
+    success_url = '/'
  
     def test_func(self):
         event = self.get_object()
