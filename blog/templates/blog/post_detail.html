@@ -12,6 +12,11 @@
 		      {% endif %}
 		    </div>
 		    <h2 class="article-title"> {{ object.title }}</h2>
+			{% if object.image %}
+			<div>
+				<img src="{{object.image.url}}" class="eventimg">
+			</div>
+			{% endif %}
 		    <p class="article-content">{{ object.content }}</p>
 			<p class="article-content">Likes: {{ object.likes.count }}</p>
 			<p class="article-content">Dislikes: {{ object.dislikes.count }}</p>
@@ -30,11 +35,7 @@
 			<p>Please login to like or dislike a post</p>
 			{%endif%}
               </div>
-			{% if object.image %}
-			<div>
-				<img src="{{object.image.url}}" class="eventimg">
-			</div>
-			{% endif %}
+			
 		  </div>
 		</article>
 {% endblock content %}
