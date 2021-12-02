@@ -28,7 +28,8 @@ ul {
 }
 
 .floatRight{
-  float:right;margin-left:20px
+  float: right;
+  margin-left: 20px;
 }
 
 .site-header .navbar-nav .nav-link:hover {
@@ -40,24 +41,32 @@ ul {
 }
 
 .content-section {
-  background: #ffffff;
+  /* background: rgb(82, 80, 80); */
+  background: maroon;
   padding: 10px 20px;
-  border: 1px solid #dddddd;
+  border: 3px solid #dddddd;
   border-radius: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  width: 80%;
 }
 
 .article-title {
-  color: #444444;
+  color: black;
+  font-size: 50px;
 }
 
 a.article-title:hover {
   color: #428bca;
-  text-decoration: none;
+  text-decoration: underline red;
 }
 
 .article-content {
-  white-space: pre-line;
+  white-space: nowrap;
+  width: 1000px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: red;
+  font-size: 20px;
 }
 
 .article-img {
