@@ -1,10 +1,8 @@
 {% extends "communities/base.html"%}
 {% block content %}
 
-	<br>
-    <br>
-    <br>
-    <h1>Welcome to our Communities</h1>
+	
+    <h1 class="font-weight-bold">Communities</h1>
     <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'All-posts' %}">All Posts</a>
 	<a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'All-events' %}">All Events</a>
     <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'MK-posts' %}">Mortal Kombat Posts</a>
@@ -20,18 +18,46 @@
     <br>
     <br>
     {% for post in posts %}
-		<article class="media content-section">
-		  <img class = "rounded-circle article-img" src = "{{post.author.profile.image.url}}">
-		  <div class="media-body">
-		    <div class="article-metadata">
-		      <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-		      <small class="text-muted">{{ post.date_posted }}</small>
-		      <small class="text-muted">{{ post.community }}</small>
-		    </div>
-		    <h2><a class="article-title" href="{% url 'post-detail' post.id%}">{{ post.title }}</a></h2>
-		    <p class="article-content">{{ post.content }}</p>
-		  </div>
-		</article>
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<article class="media content-section">
+				<div class="vstack gap-3">
+					{% comment %} <img class = "rounded-circle article-img" src = "{{post.author.profile.image.url}}"> {% endcomment %}
+					<img class = "rounded-circle article-img" src = "./GG.png">
+					<img class = "rounded-circle article-img" id = "comm pic">
+				</div>
+				<script>
+					var URL; 
+					switch(post.community) {
+						case "Guilty Gear":
+							URL = "./images/GG.png";
+							break;
+						case "Street Fighter":
+							URL = "./images/SF.png";
+							break;
+						document.getElementByID("comm pic").src = "./GG.png";
+					}
+
+				</script>
+				<div class="media-body">
+					<div class="article-metadata">
+					<a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+					<small class="text-muted floatRight">{{ post.date_posted }}</small>
+					
+					<small class="text-muted floatRight">{{ post.community }}</small>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<h2><a class="article-title font-weight-bold text-center" href="{% url 'post-detail' post.id%}">{{ post.title }}</a></h2>
+								<p class="article-content text-break">{{ post.content }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				</article>
+			</div>
+		</div>
 	{% endfor %}
 	<!-- pagination -->
 	{% if is_paginated %}
