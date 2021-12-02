@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Events
+from .models import Events, EventComment
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse
+from .forms import CommentForm
  
 # Create your views here.
  
@@ -111,3 +112,41 @@ def RemoveDislikeView(request, pk):
     event = get_object_or_404(Events, id = pk)
     event.dislikes.remove(request.user)
     return HttpResponseRedirect(reverse('events-detail', args=[str(pk)]))
+
+class AddCommentView(CreateView):
+	model = EventComment
+	form_class = CommentForm
+	template_name = 'events/add_comment.html'
+	success_url = '/'
+
+	def form_valid(self, form):
+		form.instance.event_id = self.kwargs['pk']
+		return super().form_valid(form)
+
+def CommentLikeView(request, pk):
+	comment = get_object_or_404(EventComment, id = pk)
+	comment.likes.add(request.user)
+	event = comment.event
+	returnPK = event.id
+	return HttpResponseRedirect(reverse('events-detail', args=[str(returnPK)]))
+
+def CommentUnlikeView(request, pk):
+	comment = get_object_or_404(EventComment, id = pk)
+	comment.likes.remove(request.user)
+	event = comment.event
+	returnPK = event.id
+	return HttpResponseRedirect(reverse('events-detail', args=[str(returnPK)]))
+
+def CommentDislikeView(request, pk):
+	comment = get_object_or_404(EventComment, id = pk)
+	comment.dislikes.add(request.user)
+	event = comment.event
+	returnPK = event.id
+	return HttpResponseRedirect(reverse('events-detail', args=[str(returnPK)]))
+
+def CommentRemoveDislikeView(request, pk):
+	comment = get_object_or_404(EventComment, id = pk)
+	comment.dislikes.remove(request.user)
+	event = comment.event
+	returnPK = event.id
+	return HttpResponseRedirect(reverse('events-detail', args=[str(returnPK)]))

@@ -45,3 +45,14 @@ class Events(models.Model):
     def get_absolute_url(self):
         return reverse('events-detail', kwargs = {'pk':self.pk})
 
+class EventComment(models.Model):
+	event = models.ForeignKey(Events, related_name = "comments", on_delete=models.CASCADE)
+	name = models.CharField(max_length=255)
+	body = models.TextField()
+	dislikes = models.ManyToManyField(User, related_name = 'event_comment_dislikes', blank=True)
+	likes = models.ManyToManyField(User, related_name = 'event_comment_likes', blank=True)
+	date_added = models.DateTimeField(auto_now_add=True)
+
+	#def __str__(self):
+	#	return '%s - %s' % (self.event.title, self.name)
+

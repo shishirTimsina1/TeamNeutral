@@ -1,5 +1,9 @@
 from django.urls import path
-from .views import EventsListView, EventsDetailView, EventsCreateView, EventsUpdateView, EventsDeleteView, LikeView, SignupView, UnlikeView, LeaveEventView, DislikeView, RemoveDislikeView
+from .views import ( EventsListView, EventsDetailView, EventsCreateView, 
+                    EventsUpdateView, EventsDeleteView, LikeView, SignupView, 
+                    UnlikeView, LeaveEventView, DislikeView, RemoveDislikeView, 
+                    AddCommentView, CommentLikeView, CommentRemoveDislikeView, CommentUnlikeView,
+                    CommentDislikeView )
 from . import views
  
 urlpatterns = [
@@ -14,4 +18,9 @@ urlpatterns = [
     path('<int:pk>/LeaveEvent/',LeaveEventView, name='events-leave'),
     path('<int:pk>/Dislike/',DislikeView, name='events-dislike'),
     path('<int:pk>/RemoveDislike/',RemoveDislikeView, name='events-undislike'),
+    path('<int:pk>/comment/', AddCommentView.as_view() , name='event-add-comment'),
+    path('<int:pk>/comment/like/',CommentLikeView, name='event-comment-like'),
+    path('<int:pk>/comment/unlike/',CommentUnlikeView, name='event-comment-unlike'),
+    path('<int:pk>/comment/Dislike/',CommentDislikeView, name='event-comment-dislike'),
+    path('<int:pk>/comment/RemoveDislike/',CommentRemoveDislikeView, name='event-comment-undislike'),
 ]
