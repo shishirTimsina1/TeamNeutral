@@ -21,21 +21,22 @@
 		<div class="container-fluid">
 			<div class="row justify-content-center">
 				<article class="media content-section">
-				<div class="vstack gap-3">
-					{% comment %} <img class = "rounded-circle article-img" src = "{{post.author.profile.image.url}}"> {% endcomment %}
-					<img class = "rounded-circle article-img" src = "./GG.png">
-					<img class = "rounded-circle article-img" id = "comm pic">
+				<div class="vstack gap-20">
+					<img class = "rounded-circle article-img" src = "{{post.author.profile.image.url}}" margin-bottom: 10 padding-bottom: 10>
+					<img class = "img-fluid article-img" id = "comm pic" padding-top: 10>
 				</div>
 				<script>
 					var URL; 
 					switch(post.community) {
 						case "Guilty Gear":
-							URL = "./images/GG.png";
+							URL = "../../media/template-images/GG.png";
 							break;
 						case "Street Fighter":
-							URL = "./images/SF.png";
+							URL = "../../media/template-images/SF.png";
 							break;
-						document.getElementByID("comm pic").src = "./GG.png";
+						default:
+							URL = "../../media/template-images/capture.png";
+						document.getElementByID("comm pic").background-color = black;
 					}
 
 				</script>
