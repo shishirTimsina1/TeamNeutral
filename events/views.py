@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse
 from .forms import CommentForm
+import datetime
  
 # Create your views here.
  
@@ -46,7 +47,11 @@ class EventsListView(ListView):
  
 class EventsDetailView(DetailView):
     model = Events
- 
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current_date_time'] = datetime.datetime.now()
+        return context
  
 class EventsCreateView(LoginRequiredMixin, CreateView):
     model = Events

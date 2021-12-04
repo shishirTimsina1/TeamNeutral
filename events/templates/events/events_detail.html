@@ -28,12 +28,6 @@
               </div>
             {% endif %}
               <div>
-                {% if user in object.signed_up.all %}
-                  <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-leave' object.id%}">Leave Event</a>
-                {% else %}
-                  <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-signup' object.id%}">Signup</a>
-                {% endif %}
-             
                 {% if user in object.likes.all %}
                 <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-unlike' object.id%}" name="events_id_unlike">Unlike</a>
                 {% elif user in object.dislikes.all%}
@@ -43,6 +37,17 @@
                 <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-like' object.id%}" name="events_id_like">Like</a>
                 <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-dislike' object.id%}" name="events_id_dislike">Dislike</a>
                 {% endif %}
+                {% if user in object.signed_up.all %}
+                  <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-leave' object.id%}">Leave Event</a>
+                {% else %}
+                  {% if current_date_time.date > object.event_date.date %}
+                    <p>Cant sign up for past events</p>
+                  {%else%}
+                    <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-signup' object.id%}">Signup</a>
+                  {% endif %}    
+                {% endif %}
+             
+                
               </div>
             {% else %}
             <p>Please login to like, dislike, or signup</p>
