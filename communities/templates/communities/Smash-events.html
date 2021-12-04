@@ -26,7 +26,12 @@
         <p class="article-content">{{ event.content }}</p>
             <p class="article-content">{{ event.community }}</p>
             <p class="article-content">{{ event.event_date }}</p>
-      </div>
+            {% if event.image %}
+			<div>
+				<img src="{{event.image.url}}" class="genimg">
+			</div>
+			{% endif %}    
+    </div>
     </article>
     {% endfor %}
     {% if not events %}
