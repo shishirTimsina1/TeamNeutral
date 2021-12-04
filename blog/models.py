@@ -41,7 +41,8 @@ class InlineImage(admin.TabularInline):
 
 class Comment(models.Model):
 	post = models.ForeignKey(Post, related_name = "comments", on_delete=models.CASCADE)
-	name = models.CharField(max_length=255)
+	#name = models.CharField(max_length=255)
+	name = models.ForeignKey(User, related_name = "post_comments",max_length=255, on_delete=models.CASCADE)
 	body = models.TextField()
 	dislikes = models.ManyToManyField(User, related_name = 'comment_dislikes')
 	likes = models.ManyToManyField(User, related_name = 'comment_likes')
