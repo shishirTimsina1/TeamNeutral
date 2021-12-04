@@ -119,7 +119,7 @@ class AddCommentView(CreateView):
 	template_name = 'events/add_comment.html'
 	success_url = '/'
 
-	def form_valid(self, form):
+	def form_valid(self, form, request):
 		form.instance.event_id = self.kwargs['pk']
 		return super().form_valid(form)
 

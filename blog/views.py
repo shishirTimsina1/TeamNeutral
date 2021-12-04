@@ -21,6 +21,9 @@ def home(request):
 
 def about(request):
 	return render(request, 'blog/about.html', {'title': 'About'})
+
+def Tutorial(request):
+	return render(request, 'blog/tutorial.html', {'title': 'How To Use Neutral'})
 	
 class PostListView(ListView):
 	model = Post

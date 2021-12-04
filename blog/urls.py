@@ -5,7 +5,7 @@ from .views import (PostListView, PostDetailView, PostCreateView,
                     LikeView, UnlikeView, DislikeView, RemoveDislikeView, 
                     YourEvents, YourPosts, JoinedEvents,LikedEvents,LikedPosts,
                     AddCommentView, CommentLikeView, CommentRemoveDislikeView, CommentDislikeView,
-                    CommentUnlikeView)
+                    CommentUnlikeView, Tutorial)
 
 urlpatterns = [
     path('', PostListView.as_view() , name='blog-home'),
@@ -29,5 +29,6 @@ urlpatterns = [
     path('post/<int:pk>/comment/unlike/',CommentUnlikeView, name='comment-unlike'),
     path('post/<int:pk>/comment/Dislike/',CommentDislikeView, name='comment-dislike'),
     path('post/<int:pk>/comment/RemoveDislike/',CommentRemoveDislikeView, name='comment-undislike'),
+    path('HowToUseNeutral/', Tutorial, name = 'blog-tutorial'),
 ]
 
