@@ -20,6 +20,7 @@
             <p class="article-content">Likes: {{ object.likes.count }}</p>
             <p class="article-content">Dislikes: {{ object.dislikes.count }}</p>
             <p class="article-content">Signed up: {{ object.signed_up.count }}</p>
+          {% if user.is_authenticated %}
             {% if object.creator == user %}
               <div>
                 <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-update' object.id%}">Update</a>
@@ -43,6 +44,9 @@
                 <a class = "btn btn-secondary btn-sm mt-1 mb-1"href="{% url 'events-dislike' object.id%}" name="events_id_dislike">Dislike</a>
                 {% endif %}
               </div>
+            {% else %}
+            <p>Please login to like, dislike, or signup</p>
+          {% endif %}
               {% if object.image %}
                 <div><img class ="eventimg" src="{{object.image.url}}"></div>
               {% endif %}
