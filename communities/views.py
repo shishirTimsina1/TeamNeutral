@@ -256,7 +256,7 @@ def recommender(request):
 			elif(index == 3):
 				com = 'Street Fighter'
 			messages.success(request, f'Hi {username}! You should checkout {com}')
-			return redirect('communities')
+			return redirect('All-posts')
 	else:
 		form = RecommenderForm()
 	return render(request, 'communities/recommender.html', {'form': form})
