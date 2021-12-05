@@ -5,8 +5,8 @@
 	{% if searched %}
 		<h1>You searched for {{searched}}</h1>
 		<br/>
-		{%for posts in posts%}
-			{{ posts }} - {{posts.author}}</a><br/>
+		{%for post in posts%}
+		<a href="{% url 'post-detail' post.id%}">{{ posts }} - {{posts.author}}</a><br/>
 		{% endfor %}
 	
 	{% else %}
