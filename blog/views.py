@@ -24,7 +24,16 @@ def about(request):
 
 def Tutorial(request):
 	return render(request, 'blog/tutorial.html', {'title': 'How To Use Neutral'})
-	
+
+def Search(request):
+	if request.method == "POST":
+		searched = request.POST['searched']
+		posts = Post.objects.filter(title__contains=searched)
+		return render(request, 'blog/search_results.html', {'searched':searched,
+			'posts':posts})
+	else:
+		return render(request, 'blog/search_results.html', {})
+
 class PostListView(ListView):
 	model = Post
 	template_name = 'blog/home.html' #<app>/<model>_<viewtype>.html

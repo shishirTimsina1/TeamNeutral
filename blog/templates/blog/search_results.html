@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+	<h1>Search Results</h1>
+	{% if searched %}
+		<h1>You searched for {{searched}}</h1>
+		<br/>
+		{%for posts in posts%}
+			{{ posts }} - {{posts.author}}</a><br/>
+		{% endfor %}
+	
+	{% else %}
+		<h1>No Search</h1>
+
+	{% endif %}
+
+{% endblock content%}

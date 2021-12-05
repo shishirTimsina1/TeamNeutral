@@ -40,6 +40,15 @@ ul {
   font-weight: 500;
 }
 
+/*.navbar input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+} modifies the search bar (should hopefully)*/
+
 .content-section {
   /* background: rgb(82, 80, 80); */
   background: maroon;

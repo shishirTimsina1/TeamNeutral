@@ -35,6 +35,11 @@
 			  <a class="nav-item nav-link" href="{% url 'blog-tutorial' %}">How To Use Neutral</a>
 	          <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
 	          <a class="nav-item nav-link" href="{% url 'All-posts' %}">Communities</a>
+	          <form class = 'd-flex' method="POST" action = "{% url 'search_results' %}">
+	          	{%csrf_token%}
+	          	<input type="search" placeholder="Search..." name= "searched">
+	          	<button type="submit">Submit</button>
+	          </form>
 	        <!-- <a class="nav-item nav-link" href="{% url 'events' %}">Events</a> -->
 	        </div>
 	        <!-- Navbar Right Side -->
