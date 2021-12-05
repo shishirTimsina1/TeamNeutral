@@ -28,8 +28,7 @@ ul {
 }
 
 .floatRight{
-  float: right;
-  margin-left: 20px;
+  float:right;margin-left:20px
 }
 
 .site-header .navbar-nav .nav-link:hover {
@@ -50,35 +49,24 @@ ul {
 } modifies the search bar (should hopefully)*/
 
 .content-section {
-  /* background: rgb(82, 80, 80); */
-  background: maroon;
+  background: #ffffff;
   padding: 10px 20px;
-  border: 3px solid #dddddd;
+  border: 1px solid #dddddd;
   border-radius: 3px;
-  /*box-shadow:
-        0 0 60px 30px #0000,
-        0 0 100px 60px #4B0082; add shadow to content*/
-  margin-bottom: 30px;
-  width: 80%;
+  margin-bottom: 20px;
 }
 
 .article-title {
-  color: black;
-  font-size: 50px;
+  color: #444444;
 }
 
 a.article-title:hover {
   color: #428bca;
-  text-decoration: underline red;
+  text-decoration: none;
 }
 
 .article-content {
-  white-space: nowrap;
-  width: 1000px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: red;
-  font-size: 20px;
+  white-space: pre-line;
 }
 
 .article-img {
