@@ -6,7 +6,7 @@
 		<h1>You searched for {{searched}}</h1>
 		<br/>
 		{%for post in posts%}
-		<a href="{% url 'post-detail' post.id%}">{{ posts }} - {{posts.author}}</a><br/>
+		<a href="{% url 'post-detail' post.id%}">{{ post }} - {{post.author}}</a><br/>
 		{% endfor %}
 	
 	{% else %}
