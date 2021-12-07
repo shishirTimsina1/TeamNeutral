@@ -54,9 +54,12 @@
 				{{comment.date_added}}
 			</strong>
 			<br>
+			<br>
 			{{ comment.body }}
-			<p class="article-content">Likes: {{ comment.likes.count }}</p>
-			<p class="article-content">Dislikes: {{ comment.dislikes.count }}</p>
+			<br>
+			<br>
+			<p style = "color:red;font-size: 14px;">Likes: {{ comment.likes.count }}</p>
+			<p style = "color:red;font-size: 14px;">Dislikes: {{ comment.dislikes.count }}</p>
 			<div>
 			{%if user.is_authenticated%}
                 {% if user in comment.likes.all %}

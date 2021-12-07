@@ -23,9 +23,10 @@ ul {
   color: black;
 }
 
-.navbar-custom .navbar-brand{
+.navbar-custom .navbar-brand:hover{
   color: black;
 }
+
 
 .floatRight{
   float:right;margin-left:20px
@@ -38,15 +39,6 @@ ul {
 .site-header .navbar-nav .nav-link.active {
   font-weight: 500;
 }
-
-/*.navbar input[type=text] {
-  float: right;
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
-} modifies the search bar (should hopefully)*/
 
 .content-section {
   background: #ffffff;
