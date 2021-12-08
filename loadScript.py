@@ -1,10 +1,10 @@
-#exec(open('loadScript.py').read())
+# exec(open('loadScript.py').read())
 
 import json
 from blog.models import Post
 
 #use posts.json or posts2.json
-with open('posts.json') as f:
+with open('posts2.json') as f:
 	posts_json = json.load(f)
 
 for post in posts_json:
